@@ -22,6 +22,7 @@ class MemoTableViewController: UITableViewController {
         } else {
             self.memos.append(memo)
         }
+        self.userDefaults.set(self.memos, forKey: "memos")
         self.tableView.reloadData()
     }
     
@@ -80,6 +81,7 @@ class MemoTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             self.memos.remove(at: indexPath.row)
+            self.userDefaults.set(self.memos, forKey: "memos")
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
